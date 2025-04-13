@@ -1,80 +1,56 @@
-'use client'
 import Image from "next/image"
 import { ArrowRight, CheckCircle, ChevronRight } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-import TestimonialCarousel from "@/components/testimonial-carousel"
 import AnimatedCounter from "@/components/animated-counter"
 import BookingCalendar from "@/components/booking-calendar"
-import {  motion } from "motion/react"
+import ResultsCarousel from "@/components/results-carousel"
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-slate-50 to-slate-100 pt-20 pb-32">
+      <section className="pt-32 pb-20 bg-slate-100">
         <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-4">
-              <div className="inline-block rounded-lg bg-purple-100 px-3 py-1 text-sm text-purple-900 mb-4">
-                Lotus Growth Systems
-              </div>
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                Growth systems that{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
-                  actually scale.
-                </span>
-              </h1>
-              <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Built for founders and teams who are tired of fluff and ready to win.
-              </p>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                  Let's Build Yours <ArrowRight className="ml-2 h-4 w-4" />
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-slate-900">
+              Growth systems that{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+                actually scale.
+              </span>
+            </h1>
+            <p className="mt-6 text-xl text-slate-700 max-w-3xl mx-auto">
+              Built for founders and teams who are tired of fluff and ready to win.
+            </p>
+            <div className="mt-10">
+              <a href="#contact">
+                <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-lg px-8 py-6">
+                  Let's Build Yours
                 </Button>
-                <Button variant="outline" size="lg">
-                  See Our Results
-                </Button>
-              </div>
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            className="relative rounded-xl h-[400px] lg:h-[600px]">
-              <Image
-                src="/team.jpg"
-                alt="Growth System Visualization"
-                fill
-                className="object-contain rounded-xl"
-                priority
-              />
-            </motion.div>
+              </a>
+            </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
       {/* About Us Section */}
       <section className="py-20 bg-white" id="about">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="relative  h-[400px]">
+            <div className="relative h-[400px]">
               <Image
                 src="/ceo.jpeg"
                 alt="Mayokun Johnson"
                 fill
-                className="w-full h-full rounded-xl object-cover object-top "
+                className="w-full h-full rounded-xl object-cover object-top"
               />
             </div>
             <div className="space-y-4">
-              <div className="inline-block rounded-lg bg-blue-100 px-3 py-1 text-sm text-blue-900 mb-4">About Us</div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 We're not a funnel agency. We're a growth team.
               </h2>
@@ -107,7 +83,6 @@ export default function Home() {
       <section className="py-20 bg-slate-50" id="services">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center text-center space-y-4 mb-12">
-            <div className="inline-block rounded-lg bg-purple-100 px-3 py-1 text-sm text-purple-900">What We Do</div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Marketing that works because it's built right.
             </h2>
@@ -194,7 +169,7 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center mt-12">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
               Explore Our Process <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -204,58 +179,14 @@ export default function Home() {
       {/* Results Section */}
       <section className="py-20 bg-white" id="results">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center text-center space-y-4 mb-12">
-            <div className="inline-block rounded-lg bg-green-100 px-3 py-1 text-sm text-green-900">Results</div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Proof over promises.</h2>
-            <p className="text-gray-500 md:text-xl/relaxed max-w-[700px]">
-              Our clients see real, measurable growth. Here's what we've achieved.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2">
-            <Card className="border-0 shadow-lg overflow-hidden">
-              <CardContent className="p-0">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
-                  <h3 className="text-2xl font-bold mb-2">Revenue Growth</h3>
-                  <div className="text-5xl font-bold mb-2">
-                    <AnimatedCounter value={60} suffix="K" />
-                  </div>
-                  <p className="text-blue-100">per month in just 90 days</p>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-500">
-                    We helped a SaaS startup scale their customer acquisition, resulting in $60K monthly recurring
-                    revenue within 90 days of implementing our growth system.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg overflow-hidden">
-              <CardContent className="p-0">
-                <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-white">
-                  <h3 className="text-2xl font-bold mb-2">Retention Boost</h3>
-                  <div className="text-5xl font-bold mb-2">
-                    <AnimatedCounter value={150} prefix="+" suffix="K" />
-                  </div>
-                  <p className="text-blue-100">from a single retention tweak</p>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-500">
-                    By implementing our customer retention strategy, an e-commerce brand generated an additional $150K
-                    in revenue from existing customers.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
 
           <div className="mt-12">
-            <TestimonialCarousel />
+            <h3 className="text-2xl font-bold mb-6 text-center">Client Results</h3>
+            <ResultsCarousel />
           </div>
 
           <div className="flex justify-center mt-12">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
               See the Wins <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -343,7 +274,7 @@ export default function Home() {
                   >
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
-                  <p>+234 913 405 2630</p>
+                  <p>+2349134052630</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
@@ -435,7 +366,7 @@ export default function Home() {
                     placeholder="Tell us about your project..."
                   ></textarea>
                 </div>
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+                <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
                   Send Message
                 </Button>
               </form>
@@ -458,7 +389,7 @@ export default function Home() {
                 placeholder="Enter your email"
                 type="email"
               />
-              <Button className="bg-blue-600 hover:bg-blue-700">Subscribe</Button>
+              <Button className="bg-purple-600 hover:bg-purple-700">Subscribe</Button>
             </div>
           </div>
         </div>

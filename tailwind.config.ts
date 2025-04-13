@@ -26,7 +26,7 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#6200EE", // Updated to match the purple color
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -62,7 +62,8 @@ const config = {
         },
         purple: {
           100: "#f0e6ff",
-          600: "#6600cc",
+          600: "#6200EE", // Updated to match the image
+          700: "#5000C9", // Darker shade for hover
           900: "#33004d",
         },
         green: {
