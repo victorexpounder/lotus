@@ -41,14 +41,14 @@ export default function Navbar() {
           <Link href="/" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
             Home
           </Link>
+          <Link href="#results" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
+            Results
+          </Link>
           <Link href="#about" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
             About Us
           </Link>
           <Link href="#services" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
             What We Do
-          </Link>
-          <Link href="#results" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
-            Results
           </Link>
           <Link href="#offer" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
             Our Offer
