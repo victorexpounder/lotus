@@ -6,6 +6,7 @@ import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -32,6 +33,7 @@ export default function Navbar() {
     >
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
+          <Image src="/logo.jpeg" alt="Logo" width={32} height={32} />
           <span className="font-bold text-xl text-white">LOTUS.COM</span>
         </Link>
 

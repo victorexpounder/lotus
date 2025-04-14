@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
@@ -8,21 +8,34 @@ import Image from "next/image"
 const results = [
   {
     id: 1,
-    image: "/result1.jpeg",
+    video: "/testimonial.mp4",
   },
   {
     id: 2,
-    image: "/result2.jpeg",
+    image: "/result1.jpeg",
   },
   {
     id: 3,
+    image: "/result2.jpeg",
+  },
+  {
+    id: 4,
     image: "/result3.jpeg",
   },
 ]
 
 export default function ResultsCarousel() {
   const [current, setCurrent] = useState(0)
-  const [autoplay, setAutoplay] = useState(true)
+  const [autoplay, setAutoplay] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play()
+      setIsPlaying(true)
+    }
+  }
 
   const next = () => {
     setCurrent((current + 1) % results.length)
@@ -32,15 +45,7 @@ export default function ResultsCarousel() {
     setCurrent((current - 1 + results.length) % results.length)
   }
 
-  useEffect(() => {
-    if (!autoplay) return
-
-    const interval = setInterval(() => {
-      next()
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [current, autoplay])
+  
 
   return (
     <div className="relative">
@@ -52,8 +57,32 @@ export default function ResultsCarousel() {
           {results.map((result) => (
             <div key={result.id} className="w-full flex-shrink-0 relative">
               <div className="relative aspect-[16/9] w-full">
-                <Image src={result.image || "/placeholder.svg"} alt={'result'} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 text-white">
+                {result.image? (
+                  <Image src={result.image || "/placeholder.svg"} alt={'result'} fill className="object-cover" />
+                ) : (
+                  <div className="w-full h-full relative">
+                    <video
+                      ref={videoRef}
+                      src={result.video}
+                      controls
+                      preload="metadata"
+                      className="w-full h-full object-cover"
+                      playsInline
+                    />
+
+                    {/* Centered Play Button */}
+                    {!isPlaying && (
+                      <button
+                        onClick={handlePlay}
+                        className="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-4xl pointer-events-auto"
+                      >
+                        ▶
+                      </button>
+                    )}
+                  </div>
+                )}
+                
+                <div className=" pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 text-white">
                 </div>
               </div>
             </div>

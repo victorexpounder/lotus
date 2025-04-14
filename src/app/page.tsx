@@ -18,14 +18,14 @@ export default function Home() {
       <section className="pt-32 pb-20 bg-slate-100">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-slate-900">
-              Growth systems that{" "}
+            <h1 className="text-6xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-slate-900">
+              Is Marketing a Problem in Your Business? {" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
-                actually scale.
+               
               </span>
             </h1>
             <p className="mt-6 text-xl text-slate-700 max-w-3xl mx-auto">
-              Built for founders and teams who are tired of fluff and ready to win.
+              Let us grow your business with Proven Marketing Frameworks and build you a solid Internal Marketing Team.
             </p>
             <div className="mt-10">
               <a href="#contact">
