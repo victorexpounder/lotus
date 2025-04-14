@@ -38,6 +38,23 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Results Section */}
+      <section className="py-20 bg-white" id="results">
+        <div className="container px-4 md:px-6">
+
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold mb-6 text-center">Client Results</h3>
+            <ResultsCarousel />
+          </div>
+
+          <div className="flex justify-center mt-12">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
+              See the Wins <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+      
       {/* About Us Section */}
       <section className="py-20 bg-white" id="about">
         <div className="container px-4 md:px-6">
@@ -176,22 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Results Section */}
-      <section className="py-20 bg-white" id="results">
-        <div className="container px-4 md:px-6">
-
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold mb-6 text-center">Client Results</h3>
-            <ResultsCarousel />
-          </div>
-
-          <div className="flex justify-center mt-12">
-            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
-              See the Wins <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Offer Section */}
       <section className="py-20 bg-slate-900 text-white" id="offer">
