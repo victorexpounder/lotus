@@ -8,6 +8,7 @@ import Footer from "@/components/footer"
 import AnimatedCounter from "@/components/animated-counter"
 import BookingCalendar from "@/components/booking-calendar"
 import ResultsCarousel from "@/components/results-carousel"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -38,6 +39,115 @@ export default function Home() {
         </div>
       </section>
 
+      {/*  Marketing Agency Risks */}
+      <section className="w-full py-20 bg-[#f5f7fa]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl text-center md:text-4xl md:text-left font-bold text-[#0f172a] leading-tight mb-8">
+                Marketing Without
+                <br />
+                Dependency
+              </h2>
+              
+              <p className="text-lg text-[#334155] mb-6">Working with a Marketing Agency comes with two risks:</p>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#6200EE] flex items-center justify-center text-white font-bold">
+                    1
+                  </div>
+                  <p className="text-lg text-[#334155]">
+                    <span className="font-semibold">You pay them and get no result</span>
+                  </p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#6200EE] flex items-center justify-center text-white font-bold">
+                    2
+                  </div>
+                  <p className="text-lg text-[#334155]">
+                    <span className="font-semibold">You get results but you're stuck depending on them forever.</span>
+                  </p>
+                </div>
+              </div>
+              <div className="mt-10">
+                <p className="text-lg text-[#334155]">
+                  We are different. As we do your marketing, we also train your marketing team to become great
+                  marketers.
+                  <span className="block mt-4 font-semibold text-xl">So you get results and freedom.</span>
+                </p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#6200EE]/10 rounded-full"></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#6200EE]/10 rounded-full"></div>
+              <div className="relative bg-white p-8 rounded-lg shadow-xl">
+                <div className="flex flex-col gap-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-[#6200EE]/10 flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#7e22ce"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                      </svg>
+                    </div>
+                    <p className="font-medium text-[#0f172a]">Results-driven marketing strategies</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-[#7e22ce]/10 flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#7e22ce"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      </svg>
+                    </div>
+                    <p className="font-medium text-[#0f172a]">Team training & development</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-[#6200EE]/10 flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#7e22ce"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                      </svg>
+                    </div>
+                    <p className="font-medium text-[#0f172a]">Long-term independence</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Results Section */}
       <section className="py-20 bg-white" id="results">
         <div className="container px-4 md:px-6">
@@ -48,9 +158,11 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center mt-12">
-            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
-              See the Wins <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <a href="#offer">
+              <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
+                Book A Call <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -111,84 +223,99 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                <div className="h-12 w-12 rounded-full bg-[#6200EE]/20 flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
+                    width="28"
+                    height="28"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="#7e22ce"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-blue-600"
                   >
-                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold">Offers that convert</h3>
+                <h3 className="text-xl font-bold">Proven Frameworks</h3>
                 <p className="text-gray-500">
-                  We craft compelling offers that speak directly to your audience's needs and drive conversions.
+                  We use proven marketing frameworks to grow your business, ensuring reliable and consistent results.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardContent className="p-6 space-y-4">
+                <div className="h-12 w-12 rounded-full bg-[#6200EE]/20 flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#7e22ce"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+                </div>
+                <h3 className="text-xl font-bold">Real Growth</h3>
+                <p className="text-gray-500">
+                  While implementing our strategies, we deliver tangible business growth and measurable results.
                 </p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-purple-600"
-                  >
-                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
-                  </svg>
+                <div className="h-12 w-12 rounded-full bg-[#6200EE]/20 flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#7e22ce"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
                 </div>
-                <h3 className="text-xl font-bold">Systems that sell</h3>
+                <h3 className="text-xl font-bold">Your Own Team </h3>
                 <p className="text-gray-500">
-                  We build automated marketing systems that consistently generate leads and sales.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-green-600"
-                  >
-                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold">Retention that compounds</h3>
-                <p className="text-gray-500">
-                  We implement strategies that keep customers coming back, maximizing lifetime value.
+                  We train your people to become top-tier marketers who can continue growing your business independently.
                 </p>
               </CardContent>
             </Card>
           </div>
 
+          <div className="mt-16 text-center">
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
+              So, in 6 months or less, you're not just making more money—
+              <br />
+              <span className="font-semibold">
+                You also have a full team who can keep growing the business without needing us forever.
+              </span>
+            </p>
+            <p className="text-lg text-[#6200EE]/90 italic">That's how we do marketing differently.</p>
+
+          </div>
+
           <div className="flex justify-center mt-12">
-            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
-              Explore Our Process <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <a href="#contact">
+              <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
+                Contact Us <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -207,39 +334,57 @@ export default function Home() {
               </p>
               <div className="space-y-4 mt-6">
                 <div className="flex items-start gap-3">
-                  <div className="h-6 w-6 rounded-full bg-green-500 flex items-center justify-center mt-1">
+                  <div className="h-6 w-8 p-2 rounded-full bg-green-500 flex items-center justify-center mt-1">
                     <CheckCircle className="h-4 w-4 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">Strategy Development</h3>
-                    <p className="text-slate-300">Comprehensive marketing strategy tailored to your business goals</p>
+                    <p className="text-slate-300">We build a smart marketing plan just for your business goals.
+                    No guessing. No fluff. Just what works that we have used across Clients in Travels and Tours, Renewable Energy (Solar), Entertainment and other industries.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="h-6 w-6 rounded-full bg-green-500 flex items-center justify-center mt-1">
+                  <div className="h-6 w-8 p-2 rounded-full bg-green-500 flex items-center justify-center mt-1">
                     <CheckCircle className="h-4 w-4 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">System Implementation</h3>
-                    <p className="text-slate-300">End-to-end execution of marketing systems that drive growth</p>
+                    <p className="text-slate-300">We set up and run the systems, tools, and campaigns that bring in leads and sales.
+                    All done for you—start to finish.
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="h-6 w-6 rounded-full bg-green-500 flex items-center justify-center mt-1">
+                  <div className="h-6 w-8 p-2 rounded-full bg-green-500 flex items-center justify-center mt-1">
+                    <CheckCircle className="h-4 w-4 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg">Internal Team Training</h3>
+                    <p className="text-slate-300">While we work, we also train your in-house team.
+                    They learn how to do marketing, content, and closing—so they become growth machines.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="h-6 w-8 p-2 rounded-full bg-green-500 flex items-center justify-center mt-1">
                     <CheckCircle className="h-4 w-4 text-white" />
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">Ongoing Optimization</h3>
-                    <p className="text-slate-300">Continuous improvement based on data and performance</p>
+                    <p className="text-slate-300">We don’t stop at setup.
+                    We keep improving, and adjusting everything based on real data—so you grow faster.
+                    </p>
                   </div>
                 </div>
               </div>
-              <Button size="lg" className="mt-6 bg-green-500 hover:bg-green-600 text-white">
-                Book a Discovery Call <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <a href="#calendar">
+                <Button size="lg" className="mt-6 bg-green-500 hover:bg-green-600 text-white">
+                  Find out if you can work with us <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
             </div>
             <div className="relative rounded-xl overflow-hidden">
-              <div className="bg-slate-800 p-8 rounded-xl">
+              <div id="calendar" className="bg-slate-800 p-8 rounded-xl">
                 <h3 className="text-2xl font-bold mb-6">Schedule Your Call</h3>
                 <BookingCalendar />
               </div>
@@ -372,26 +517,6 @@ export default function Home() {
                   Send Message
                 </Button>
               </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="py-12 bg-slate-50">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Join our newsletter</h2>
-            <p className="text-gray-500 max-w-[600px]">
-              Get the latest insights on marketing and growth delivered to your inbox.
-            </p>
-            <div className="flex w-full max-w-md flex-col gap-2 min-[400px]:flex-row">
-              <input
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="Enter your email"
-                type="email"
-              />
-              <Button className="bg-purple-600 hover:bg-purple-700">Subscribe</Button>
             </div>
           </div>
         </div>

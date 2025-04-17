@@ -8,7 +8,7 @@ import Image from "next/image"
 const results = [
   {
     id: 1,
-    video: "/teser.webm",
+    video: "/test480.mov",
   },
   {
     id: 2,

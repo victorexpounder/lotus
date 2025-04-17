@@ -72,6 +72,7 @@ export default function BookingCalendar() {
               mode="single"
               selected={date}
               onSelect={setDate}
+              style={{ width: "100%" }}
               className="rounded-md border"
               disabled={(date) => {
                 const day = date.getDay()
@@ -92,7 +93,7 @@ export default function BookingCalendar() {
                   <Button
                     key={t}
                     variant={time === t ? "default" : "outline"}
-                    className={time === t ? "bg-blue-600 hover:bg-blue-700" : ""}
+                    className={time === t ? "bg-blue-600 hover:bg-blue-700 text-white" : "text-black"}
                     onClick={() => setTime(t)}
                   >
                     {t}
