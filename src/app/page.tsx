@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image"
 import { ArrowRight, CheckCircle, ChevronRight } from "lucide-react"
 
@@ -9,143 +10,184 @@ import AnimatedCounter from "@/components/animated-counter"
 import BookingCalendar from "@/components/booking-calendar"
 import ResultsCarousel from "@/components/results-carousel"
 import Link from "next/link"
+import { motion, useAnimation } from "motion/react"
+import { useInView } from "react-intersection-observer"
+import { useEffect } from "react"
 
 export default function Home() {
+  const controls = useAnimation()
+  const heroControls = useAnimation()
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 })
+
+  useEffect(() => {
+      heroControls.start("visible")
+      if(inView) {
+        controls.start("visible")
+      }
+  }, [controls, inView])
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        staggerChildren: 0.2,
+      },
+    },
+  }
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-slate-100">
-        <div className="container px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-6xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-slate-900">
-              Is Marketing a Problem in Your Business? {" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
-               
-              </span>
-            </h1>
-            <p className="mt-6 text-xl text-slate-700 max-w-3xl mx-auto">
-              Let us grow your business with Proven Marketing Frameworks and build you a solid Internal Marketing Team.
-            </p>
-            <div className="mt-10">
-              <a href="#contact">
-                <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-lg px-8 py-6">
-                  Let's Build Yours
-                </Button>
-              </a>
-            </div>
-          </div>
-        </div>
+      <section className="pt-32 pb-20 bg-slate-100" ref={ref}>
+      <div className="container px-4 md:px-6">
+        <motion.div
+          className="max-w-4xl mx-auto text-center"
+          variants={fadeUp}
+          initial="hidden"
+          animate={heroControls}
+        >
+          <motion.h1
+            variants={fadeUp}
+            className="text-6xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-slate-900"
+          >
+            Is Marketing a Problem in Your Business?{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+              {/* Optional highlight */}
+            </span>
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-xl text-slate-700 max-w-3xl mx-auto"
+          >
+            Let us grow your business with Proven Marketing Frameworks and build you a solid Internal Marketing Team.
+          </motion.p>
+
+          <motion.div variants={fadeUp} className="mt-10">
+            <a href="#contact">
+              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-lg px-8 py-6">
+                Let's Build Yours
+              </Button>
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
       </section>
 
       {/*  Marketing Agency Risks */}
-      <section className="w-full py-20 bg-[#f5f7fa]">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl text-center md:text-4xl md:text-left font-bold text-[#0f172a] leading-tight mb-8">
-                Marketing Without
-                <br />
-                Dependency
-              </h2>
-              
-              <p className="text-lg text-[#334155] mb-6">Working with a Marketing Agency comes with two risks:</p>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
+      <section className="w-full py-20 bg-[#f5f7fa]" ref={ref}>
+      <div className="container mx-auto px-4 max-w-6xl">
+        <motion.div
+          className="grid md:grid-cols-2 gap-12 items-center"
+          initial="hidden"
+          animate={controls}
+          variants={fadeUp}
+        >
+          {/* Text Section */}
+          <motion.div variants={fadeUp}>
+            <h2 className="text-3xl text-center md:text-4xl md:text-left font-bold text-[#0f172a] leading-tight mb-8">
+              Marketing Without
+              <br />
+              Dependency
+            </h2>
+
+            <p className="text-lg text-[#334155] mb-6">
+              Working with a Marketing Agency comes with two risks:
+            </p>
+
+            <div className="space-y-6">
+              {[
+                "You pay them and get no result",
+                "You get results but you're stuck depending on them forever.",
+              ].map((text, i) => (
+                <motion.div
+                  key={i}
+                  className="flex items-start gap-4"
+                  variants={fadeUp}
+                >
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#6200EE] flex items-center justify-center text-white font-bold">
-                    1
+                    {i + 1}
                   </div>
                   <p className="text-lg text-[#334155]">
-                    <span className="font-semibold">You pay them and get no result</span>
+                    <span className="font-semibold">{text}</span>
                   </p>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#6200EE] flex items-center justify-center text-white font-bold">
-                    2
-                  </div>
-                  <p className="text-lg text-[#334155]">
-                    <span className="font-semibold">You get results but you're stuck depending on them forever.</span>
-                  </p>
-                </div>
-              </div>
-              <div className="mt-10">
-                <p className="text-lg text-[#334155]">
-                  We are different. As we do your marketing, we also train your marketing team to become great
-                  marketers.
-                  <span className="block mt-4 font-semibold text-xl">So you get results and freedom.</span>
-                </p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div variants={fadeUp} className="mt-10">
+              <p className="text-lg text-[#334155]">
+                We are different. As we do your marketing, we also train your marketing team to become great
+                marketers.
+                <span className="block mt-4 font-semibold text-xl">So you get results and freedom.</span>
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* Card Section */}
+          <motion.div className="relative" variants={fadeUp}>
+            <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#6200EE]/10 rounded-full"></div>
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#6200EE]/10 rounded-full"></div>
+            <div className="relative bg-white p-8 rounded-lg shadow-xl">
+              <div className="flex flex-col gap-6">
+                {[
+                  "Results-driven marketing strategies",
+                  "Team training & development",
+                  "Long-term independence",
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex items-center gap-4"
+                    variants={fadeUp}
+                  >
+                    <div className="w-12 h-12 rounded-full bg-[#6200EE]/10 flex items-center justify-center">
+                      {/* You can also dynamically insert different icons here */}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#7e22ce"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        {i === 0 && (
+                          <>
+                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                            <path d="m9 12 2 2 4-4"></path>
+                          </>
+                        )}
+                        {i === 1 && (
+                          <>
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                          </>
+                        )}
+                        {i === 2 && (
+                          <>
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                          </>
+                        )}
+                      </svg>
+                    </div>
+                    <p className="font-medium text-[#0f172a]">{item}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
-            <div className="relative">
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#6200EE]/10 rounded-full"></div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#6200EE]/10 rounded-full"></div>
-              <div className="relative bg-white p-8 rounded-lg shadow-xl">
-                <div className="flex flex-col gap-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-[#6200EE]/10 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#7e22ce"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                        <path d="m9 12 2 2 4-4"></path>
-                      </svg>
-                    </div>
-                    <p className="font-medium text-[#0f172a]">Results-driven marketing strategies</p>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-[#7e22ce]/10 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#7e22ce"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                      </svg>
-                    </div>
-                    <p className="font-medium text-[#0f172a]">Team training & development</p>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-[#6200EE]/10 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#7e22ce"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                      </svg>
-                    </div>
-                    <p className="font-medium text-[#0f172a]">Long-term independence</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
+      </div>
       </section>
 
       {/* Results Section */}
@@ -169,16 +211,26 @@ export default function Home() {
       
       {/* About Us Section */}
       <section className="py-20 bg-white" id="about">
-        <div className="container px-4 md:px-6">
+        <motion.div 
+          className="container px-4 md:px-6"
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeUp}
+        >
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="relative h-[400px]">
+            <motion.div 
+              className="relative h-[400px]"
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeUp}
+            >
               <Image
                 src="/ceo.jpeg"
                 alt="Mayokun Johnson"
                 fill
                 className="w-full h-full rounded-xl object-cover object-top"
               />
-            </div>
+            </motion.div>
             <div className="space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 We're not a funnel agency. We're a growth team.
@@ -205,22 +257,32 @@ export default function Home() {
               </Button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* What We Do Section */}
       <section className="py-20 bg-slate-50" id="services">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center text-center space-y-4 mb-12">
+          <motion.div 
+            className="flex flex-col items-center text-center space-y-4 mb-12"
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeUp}
+          >
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Marketing that works because it's built right.
             </h2>
             <p className="text-gray-500 md:text-xl/relaxed max-w-[700px]">
               We create comprehensive growth systems that drive sustainable results.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div 
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeUp}
+          >
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6 space-y-4">
                 <div className="h-12 w-12 rounded-full bg-[#6200EE]/20 flex items-center justify-center">
@@ -296,9 +358,14 @@ export default function Home() {
                 </p>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
 
-          <div className="mt-16 text-center">
+          <motion.div 
+            className="mt-16 text-center"
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeUp}
+          >
             <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
               So, in 6 months or less, you're not just making more money—
               <br />
@@ -308,7 +375,7 @@ export default function Home() {
             </p>
             <p className="text-lg text-[#6200EE]/90 italic">That's how we do marketing differently.</p>
 
-          </div>
+          </motion.div>
 
           <div className="flex justify-center mt-12">
             <a href="#contact">
@@ -324,7 +391,12 @@ export default function Home() {
 
       {/* Offer Section */}
       <section className="py-20 bg-slate-900 text-white" id="offer">
-        <div className="container px-4 md:px-6">
+        <motion.div 
+          className="container px-4 md:px-6"
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeUp}
+        >
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="space-y-4">
               <div className="inline-block rounded-lg bg-blue-900 px-3 py-1 text-sm text-blue-100 mb-4">Our Offer</div>
@@ -390,14 +462,19 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Contact Section */}
       <section className="py-20 bg-white" id="contact">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="space-y-4">
+            <motion.div 
+              className="space-y-4"
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeUp}
+            >
               <div className="inline-block rounded-lg bg-purple-100 px-3 py-1 text-sm text-purple-900 mb-4">
                 Get Started
               </div>
@@ -442,8 +519,13 @@ export default function Home() {
                   <p>hello@lotus.com</p>
                 </div>
               </div>
-            </div>
-            <div className="bg-slate-50 p-8 rounded-xl">
+            </motion.div>
+            <motion.div 
+              className="bg-slate-50 p-8 rounded-xl"
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeUp}
+            >
               <form className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
@@ -517,7 +599,7 @@ export default function Home() {
                   Send Message
                 </Button>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
