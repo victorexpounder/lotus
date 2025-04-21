@@ -21,6 +21,59 @@ export default function BookingCalendar() {
     setStep(3)
   }
 
+  function getTimezoneOffsetString(date: Date) {
+    const offset = -date.getTimezoneOffset() // in minutes
+    const sign = offset >= 0 ? "+" : "-"
+    const absOffset = Math.abs(offset)
+    const hours = String(Math.floor(absOffset / 60)).padStart(2, "0")
+    const minutes = String(absOffset % 60).padStart(2, "0")
+    return `${sign}${hours}:${minutes}`
+  }
+  
+  function formatToCalendlyLocalISO(date: Date) {
+    const pad = (n: number) => n.toString().padStart(2, "0")
+  
+    const year = date.getFullYear()
+    const month = pad(date.getMonth() + 1)
+    const day = pad(date.getDate())
+    const hours = pad(date.getHours())
+    const minutes = pad(date.getMinutes())
+    const seconds = pad(date.getSeconds())
+    const timezoneOffset = getTimezoneOffsetString(date)
+  
+    // Assuming your timezone is always +01:00
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}${timezoneOffset}`
+  }
+  
+
+  const Submit = () =>{
+    const timeParts = time?.match(/(\d+):(\d+)\s?(AM|PM)/)
+    if (!timeParts) return null
+
+    let hours = parseInt(timeParts[1], 10)
+    const minutes = parseInt(timeParts[2], 10)
+    const period = timeParts[3]
+
+    if (period === "PM" && hours < 12) hours += 12
+    if (period === "AM" && hours === 12) hours = 0
+
+    const combinedDate = new Date(date || new Date())
+    combinedDate.setHours(hours, minutes)
+
+    // Format as Calendly expects (e.g., 2025-04-24T14:30:00+01:00)
+    const formattedDate = formatToCalendlyLocalISO(combinedDate)
+
+    const calendlyLink = `https://calendly.com/mayokunjohnson1/30min/${formattedDate}`
+
+    return (
+      <a href={calendlyLink} target="_blank" rel="noopener noreferrer">
+        <Button className="w-full mt-4 bg-green-500 hover:bg-green-600" onClick={() => console.log(combinedDate)}>
+          Continue <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
+      </a>
+    )
+  }
+
   if (step === 3) {
     return (
       <div className="text-center space-y-4">
@@ -61,7 +114,7 @@ export default function BookingCalendar() {
 
   return (
     <div>
-      {step === 1 ? (
+      {step === 1 && (
         <div className="space-y-4">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
@@ -104,63 +157,11 @@ export default function BookingCalendar() {
           )}
 
           {date && time && (
-            <Button className="w-full mt-4 bg-green-500 hover:bg-green-600" onClick={() => setStep(2)}>
-              Continue <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Submit />
           )}
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <label htmlFor="name" className="text-sm font-medium">
-              Your Name
-            </label>
-            <input
-              id="name"
-              className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              placeholder="John Doe"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium">
-              Your Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              placeholder="john@example.com"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-
-          <div className="bg-slate-700 p-4 rounded-lg">
-            <div className="flex items-center gap-2 mb-2">
-              <CalendarIcon className="h-4 w-4 text-blue-400" />
-              <span>{date?.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-blue-400" />
-              <span>{time}</span>
-            </div>
-          </div>
-
-          <div className="flex gap-2">
-            <Button type="button" variant="outline" className="flex-1" onClick={() => setStep(1)}>
-              Back
-            </Button>
-            <Button type="submit" className="flex-1 bg-green-500 hover:bg-green-600">
-              Confirm Booking
-            </Button>
-          </div>
-        </form>
-      )}
+      )
+      } 
     </div>
   )
 }

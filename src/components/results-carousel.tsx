@@ -12,7 +12,7 @@ const results = [
   },
   {
     id: 2,
-    image: "/result1.jpeg",
+    video: "/test2.mp4",
   },
   {
     id: 3,
