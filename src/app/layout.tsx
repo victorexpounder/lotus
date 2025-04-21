@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.jpeg" />
       </head>
-      <body className={inter.className}>
+      <body style={{ overflowX: "hidden" }} className={inter.className}>
           {children}
       </body>
     </html>

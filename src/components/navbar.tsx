@@ -10,7 +10,9 @@ import Image from "next/image"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  const closeMenu = () => setIsMenuOpen(false)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -63,7 +65,7 @@ export default function Navbar() {
             <Link href="#contact">Get Started</Link>
           </Button>
 
-          <Sheet>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
@@ -76,22 +78,22 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="bg-slate-900 text-white border-slate-800">
               <div className="flex flex-col gap-6 mt-8">
-                <Link href="/" className="text-lg font-medium hover:text-purple-400 transition-colors">
+                <Link href="/" onClick={closeMenu} className="text-lg font-medium hover:text-purple-400 transition-colors">
                   Home
                 </Link>
-                <Link href="#results" className="text-lg font-medium hover:text-purple-400 transition-colors">
+                <Link href="#results" onClick={closeMenu} className="text-lg font-medium hover:text-purple-400 transition-colors">
                   Results
                 </Link>
-                <Link href="#offer" className="text-lg font-medium hover:text-purple-400 transition-colors">
+                <Link href="#offer" onClick={closeMenu} className="text-lg font-medium hover:text-purple-400 transition-colors">
                   Our Offer
                 </Link>
-                <Link href="#about" className="text-lg font-medium hover:text-purple-400 transition-colors">
+                <Link href="#about" onClick={closeMenu} className="text-lg font-medium hover:text-purple-400 transition-colors">
                   About Us
                 </Link>
-                <Link href="#services" className="text-lg font-medium hover:text-purple-400 transition-colors">
+                <Link href="#services" onClick={closeMenu} className="text-lg font-medium hover:text-purple-400 transition-colors">
                   What We Do
                 </Link>
-                <Link href="#contact" className="text-lg font-medium hover:text-purple-400 transition-colors">
+                <Link href="#contact" onClick={closeMenu} className="text-lg font-medium hover:text-purple-400 transition-colors">
                   Contact
                 </Link>
                 <Button asChild className="mt-4 bg-purple-600 hover:bg-purple-700 w-full">
