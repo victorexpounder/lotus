@@ -62,7 +62,7 @@ export default function ResultsCarousel() {
                 ) : (
                   <div className="w-full h-full relative">
                     <video
-                      ref={videoRef}
+                      ref={result.id === results[current].id ? videoRef : null}
                       src={result.video}
                       controls
                       preload="metadata"
