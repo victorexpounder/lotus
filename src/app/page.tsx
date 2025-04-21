@@ -480,7 +480,7 @@ export default function Home() {
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Ready to build your growth system?</h2>
               <p className="text-gray-500 md:text-xl/relaxed">
-                Fill out the form and we'll get back to you within 24 hours to discuss how we can help.
+                Fill out the form and we'll get back to you to discuss how we can help.
               </p>
               <div className="space-y-2 mt-6">
                 <div className="flex items-center gap-2">
@@ -516,7 +516,7 @@ export default function Home() {
                     <rect width="20" height="16" x="2" y="4" rx="2" />
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
-                  <p>hello@lotus.com</p>
+                  <p>lotusmedia101@gmail.com</p>
                 </div>
               </div>
             </motion.div>
@@ -526,7 +526,7 @@ export default function Home() {
               whileInView="visible"
               variants={fadeUp}
             >
-              <form className="space-y-4">
+              <form className="space-y-4" action="https://formsubmit.co/lotusmedia101@gmail.com" method="POST">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <label
@@ -539,6 +539,7 @@ export default function Home() {
                       id="first-name"
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       placeholder="John"
+                      name="first-name"
                     />
                   </div>
                   <div className="space-y-2">
@@ -552,6 +553,7 @@ export default function Home() {
                       id="last-name"
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       placeholder="Doe"
+                      name="last-name"
                     />
                   </div>
                 </div>
@@ -567,6 +569,7 @@ export default function Home() {
                     type="email"
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="john.doe@example.com"
+                    name="email"
                   />
                 </div>
                 <div className="space-y-2">
@@ -580,6 +583,7 @@ export default function Home() {
                     id="company"
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="Acme Inc."
+                    name="company"
                   />
                 </div>
                 <div className="space-y-2">
@@ -593,6 +597,7 @@ export default function Home() {
                     id="message"
                     className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="Tell us about your project..."
+                    name="message"
                   ></textarea>
                 </div>
                 <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
