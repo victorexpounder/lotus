@@ -40,7 +40,7 @@ export default function Home() {
   }
   return (
     <div className="flex overflow-hidden min-h-screen flex-col">
-      <Navbar />
+      <Navbar showNav={true} />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-slate-100" ref={ref}>
@@ -521,7 +521,7 @@ export default function Home() {
               </div>
             </motion.div>
             <motion.div 
-              className="bg-slate-50 p-8 rounded-xl"
+              className="bg-slate-50 p-8 rounded-xl overflow-scroll"
               initial="hidden"
               whileInView="visible"
               variants={fadeUp}
@@ -540,6 +540,7 @@ export default function Home() {
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       placeholder="John"
                       name="first-name"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -554,9 +555,32 @@ export default function Home() {
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       placeholder="Doe"
                       name="last-name"
+                      required
                     />
                   </div>
                 </div>
+
+                <div className="space-y-2">
+                  <label
+                    htmlFor="phone"
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Phone Number
+                  </label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    placeholder="+2349134052630"
+                    pattern="[0-9+]+"
+                    title="Please enter a valid phone number"
+                    required
+                    autoComplete="tel"
+                    autoCorrect="off"
+                    name="phone"
+                  />
+                </div>
+
                 <div className="space-y-2">
                   <label
                     htmlFor="email"
@@ -570,8 +594,10 @@ export default function Home() {
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="john.doe@example.com"
                     name="email"
+                    required
                   />
                 </div>
+
                 <div className="space-y-2">
                   <label
                     htmlFor="company"
@@ -584,8 +610,10 @@ export default function Home() {
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="Acme Inc."
                     name="company"
+                    required
                   />
                 </div>
+
                 <div className="space-y-2">
                   <label
                     htmlFor="message"

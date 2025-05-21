@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 
-export default function Navbar() {
+export default function Navbar({showNav }: {showNav: boolean}) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -38,27 +38,28 @@ export default function Navbar() {
           <Image src="/logo.jpeg" alt="Logo" width={32} height={32} />
           <span className="font-bold text-xl text-white">LOTUS.COM</span>
         </Link>
-
-        <nav className="hidden md:flex gap-6">
-          <Link href="/" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
-            Home
-          </Link>
-          <Link href="#results" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
-            Results
-          </Link>
-          <Link href="#about" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
-            About Us
-          </Link>
-          <Link href="#services" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
-            What We Do
-          </Link>
-          <Link href="#offer" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
-            Our Offer
-          </Link>
-          <Link href="#contact" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
-            Contact
-          </Link>
-        </nav>
+        {showNav && (
+          <nav className="hidden md:flex gap-6">
+            <Link href="/" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
+              Home
+            </Link>
+            <Link href="#results" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
+              Results
+            </Link>
+            <Link href="#about" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
+              About Us
+            </Link>
+            <Link href="#services" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
+              What We Do
+            </Link>
+            <Link href="#offer" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
+              Our Offer
+            </Link>
+            <Link href="#contact" className="text-sm font-medium text-white hover:text-purple-400 transition-colors">
+              Contact
+            </Link>
+          </nav>
+        )}
 
         <div className="flex items-center gap-4">
           <Button asChild className="hidden md:inline-flex bg-purple-600 hover:bg-purple-700">
