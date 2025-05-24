@@ -267,6 +267,7 @@ const page = (props: Props) => {
                                     <div className="space-y-2">
                                     <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">What's your monthly budget for lead generation?</label>
                                     <select name="Budget" required className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                                        <option value="3">Select An Option</option>
                                         <option value="3">₦250k or more</option>
                                         <option value="2">₦150k–₦249k</option>
                                         <option value="1">₦100k–₦149k</option>
@@ -277,6 +278,7 @@ const page = (props: Props) => {
                                     <div className="space-y-2">
                                     <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Are you the final decision-maker?</label>
                                     <select name="Authority" required className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                                        <option value="2">Select An Option</option>
                                         <option value="2">Yes</option>
                                         <option value="1">Need to consult team</option>
                                         <option value="0">Just researching</option>
@@ -286,6 +288,7 @@ const page = (props: Props) => {
                                     <div className="space-y-2">
                                     <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">What's your biggest challenge with getting leads?</label>
                                     <select name="Need" required className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                                        <option value="2">Select An Option</option>
                                         <option value="2">Urgent pain (e.g., struggling to get leads)</option>
                                         <option value="1">Moderate pain / looking to grow</option>
                                         <option value="0">No problem expressed</option>
@@ -295,6 +298,7 @@ const page = (props: Props) => {
                                     <div className="space-y-2">
                                     <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Have you used paid ads before?</label>
                                     <select name="Experience" required className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                                        <option value="1">Select An Option</option>
                                         <option value="1">Yes and got results</option>
                                         <option value="0">No or bad experience</option>
                                     </select>
@@ -303,6 +307,7 @@ const page = (props: Props) => {
                                     <div className="space-y-2">
                                     <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">When do you want to start?</label>
                                     <select name="Timing" required className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                                        <option value="2">Select An Option</option>
                                         <option value="2">Immediately / 1–2 weeks</option>
                                         <option value="1">2–4 weeks</option>
                                         <option value="0">Later / Not sure</option>
