@@ -107,11 +107,11 @@ const page = (props: Props) => {
 
         nextpassed.type = 'hidden';
         nextpassed.name = '_next';
-        nextpassed.value = 'https://lotusmedia101.com/funnel/final';
+        nextpassed.value = 'https://www.lotusgrowths.com/funnel/final';
 
         nextfailed.type = 'hidden';
         nextfailed.name = '_next';
-        nextfailed.value = 'https://lotusmedia101.com/funnel/thank-you';
+        nextfailed.value = 'https://www.lotusgrowths.com/funnel/thank-you';
 
         form.appendChild(hiddenfirstname);
         form.appendChild(hiddencompany);
