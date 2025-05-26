@@ -44,14 +44,13 @@ const page = (props: Props) => {
         e.preventDefault()
         const form = e.target.form 
         const firstname = form.firstname.value.trim()
-        const lastname = form.lastname.value.trim()
+        
         const phone = form.phone.value.trim()
         const email = form.email.value.trim()
         const company = form.company.value.trim()
 
-        if (firstname && lastname && phone && email && company) {
+        if (firstname  && phone && email && company) {
             setFirstname(firstname);
-            setLastname(lastname);
             setPhone(phone);
             setEmail(email);
             setCompany(company);
@@ -84,7 +83,6 @@ const page = (props: Props) => {
 
         const hiddenCategory = document.createElement('input');
         const hiddenfirstname = document.createElement('input');
-        const hiddenlastname = document.createElement('input');
         const hiddencompany = document.createElement('input');
         const hiddenphone = document.createElement('input');
         const hiddenemail = document.createElement('input');
@@ -94,9 +92,6 @@ const page = (props: Props) => {
         hiddenfirstname.type = 'hidden';
         hiddenfirstname.name = 'First Name';
         hiddenfirstname.value = firstname;
-        hiddenlastname.type = 'hidden';
-        hiddenlastname.name = 'Last Name';
-        hiddenlastname.value = lastname;
         hiddencompany.type = 'hidden';
         hiddencompany.name = 'Company';
         hiddencompany.value = company;
@@ -119,7 +114,6 @@ const page = (props: Props) => {
         nextfailed.value = 'https://lotusmedia101.com/funnel/thank-you';
 
         form.appendChild(hiddenfirstname);
-        form.appendChild(hiddenlastname);
         form.appendChild(hiddencompany);
         form.appendChild(hiddenphone);
         form.appendChild(hiddenemail);
@@ -180,13 +174,13 @@ const page = (props: Props) => {
                                     transition={{ duration: 0.4 }}
                                     className='flex flex-col gap-4'
                                 >
-                                    <div className="grid gap-4 sm:grid-cols-2">
+
                                     <div className="space-y-2">
                                         <label
                                         htmlFor="firstname"
                                         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                         >
-                                        First name
+                                        Full Name
                                         </label>
                                         <input
                                         id="firstname"
@@ -195,22 +189,6 @@ const page = (props: Props) => {
                                         name="firstname"
                                         required
                                         />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label
-                                        htmlFor="lastname"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                        >
-                                        Last name
-                                        </label>
-                                        <input
-                                        id="lastname"
-                                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                                        placeholder="Doe"
-                                        name="lastname"
-                                        required
-                                        />
-                                    </div>
                                     </div>
 
                                     <div className="space-y-2">
