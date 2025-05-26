@@ -88,6 +88,9 @@ const page = (props: Props) => {
         const hiddencompany = document.createElement('input');
         const hiddenphone = document.createElement('input');
         const hiddenemail = document.createElement('input');
+        const nextpassed = document.createElement('input');
+        const nextfailed = document.createElement('input');
+
         hiddenfirstname.type = 'hidden';
         hiddenfirstname.name = 'First Name';
         hiddenfirstname.value = firstname;
@@ -107,6 +110,14 @@ const page = (props: Props) => {
         hiddenCategory.name = 'Lead Category';
         hiddenCategory.value = category;
 
+        nextpassed.type = 'hidden';
+        nextpassed.name = '_next';
+        nextpassed.value = 'https://lotusmedia101.com/funnel/final';
+
+        nextfailed.type = 'hidden';
+        nextfailed.name = '_next';
+        nextfailed.value = 'https://lotusmedia101.com/funnel/thank-you';
+
         form.appendChild(hiddenfirstname);
         form.appendChild(hiddenlastname);
         form.appendChild(hiddencompany);
@@ -114,6 +125,11 @@ const page = (props: Props) => {
         form.appendChild(hiddenemail);
         form.appendChild(hiddenScore);
         form.appendChild(hiddenCategory);
+        if( score >= 5) {
+            form.appendChild(nextpassed);
+        }else {
+            form.appendChild(nextfailed);
+        }
         form.submit();
   };
 
